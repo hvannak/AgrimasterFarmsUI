@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NotificationsServiceService } from './shared/notifications-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AgrimasterFarmsUI';
+  showFiller = false;
+  showWelcome = true;
+
+  constructor(private router: Router,private notifyService:NotificationsServiceService){
+    this.notifyService.runningNotificationService();
+  }
+
+  gotoVaccine(){
+    this.router.navigate(['/vaccine']);
+    this.showWelcome = false;
+  }
 }

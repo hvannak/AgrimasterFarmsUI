@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiURL: 'http://localhost:64030/api',
+  hubURL: 'http://localhost:64030',
+  format: 'yyyy-MM-dd',
+  formatTime: 'HH:mm',
+  locale: 'en-US'
 };
 
 /*
