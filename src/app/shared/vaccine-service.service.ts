@@ -40,6 +40,10 @@ export class VaccineServiceService {
     getVaccineScheduleListByID(id:string):any{
       return this.http.get(environment.apiURL + '/VaccineSchedules/' + id);
     }
+
+    getVaccineScheduleListByProjectID(){
+      return this.http.get(environment.apiURL + '/VaccineSchedules/Project/' + this.formModel.value.ProjectID);
+    }
   
     deleteVaccineSchedule(id:string) {
       return this.http.delete(environment.apiURL + '/VaccineSchedules/' + id);

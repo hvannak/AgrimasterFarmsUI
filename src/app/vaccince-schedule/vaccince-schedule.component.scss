@@ -16,3 +16,24 @@
   .vac-full-width {
     width: 100%;
   }
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container > .panel {
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}

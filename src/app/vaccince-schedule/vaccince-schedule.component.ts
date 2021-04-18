@@ -12,7 +12,7 @@ import { VaccineServiceService } from '../shared/vaccine-service.service';
 })
 export class VaccinceScheduleComponent implements OnInit {
 
-  displayedColumns: string[] = ['ProjectID','Delete'];
+  displayedColumns: string[] = ['ProjectID','VacDate','Description','StatusID'];
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:false}) sort: MatSort;
   showFiller = false;
@@ -100,7 +100,7 @@ export class VaccinceScheduleComponent implements OnInit {
     }
   }
 
-  onAllowanceDelete(id: string) {
+  onDeleteVaccineSchedule(id: string) {
     if (confirm('Are you sure to delete this record?')) {
       this.service.deleteVaccineSchedule(id).subscribe(res => {
         let index = this.service.vaccineScheduleList.data.findIndex(x=>x.VaccineID == id);
@@ -109,6 +109,14 @@ export class VaccinceScheduleComponent implements OnInit {
         this.toastr.warning("Deleted Successfully", "Vaccine Schedule");
       });
     }
+  }
+
+  getProjectVacSchedule(){
+    this.service.getVaccineScheduleListByProjectID().subscribe(res => {
+      this.service.vaccineScheduleList = new MatTableDataSource(res as Array<any>);
+      this.service.vaccineScheduleList.paginator = this.paginator;
+      this.service.vaccineScheduleList.sort = this.sort;
+    });
   }
 
 }
