@@ -1,14 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsServiceService {
+  bageNotify = 0;
+  message = new Subject<String>();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+  }
 
   runningNotificationService() {
     let connection = new signalR.HubConnectionBuilder()
@@ -21,9 +25,12 @@ export class NotificationsServiceService {
       return console.error(err.toString());  
     });  
   
-    connection.on("BroadcastMessage", function(message) { 
+    connection.on("BroadcastMessage", (message) => { 
       console.log(message); 
+      this.bageNotify += 1;
+      this.message.next(message);
       // this.getEmployeeData();  
     });
   }
+
 }

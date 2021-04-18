@@ -5,7 +5,7 @@
   <span>Agrimaster Farms</span>
   <span class="app-spacer"></span>
   <button mat-icon-button class="app-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>notifications</mat-icon>
+    <mat-icon [matBadge]="notifyService.bageNotify" matBadgeColor="warn">notifications</mat-icon>
   </button>
   <button mat-icon-button class="app-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
@@ -14,11 +14,6 @@
 
 <mat-drawer-container class="app-container" autosize>
   <mat-drawer #drawer class="app-sidenav" mode="side">
-    <!-- <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> -->
     <div class="card-container">
       <a class="card" rel="noopener" routerLink="/vaccine">
         <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

@@ -12,7 +12,7 @@ export class AppComponent {
   showFiller = false;
   showWelcome = true;
 
-  constructor(private router: Router,private notifyService:NotificationsServiceService){
+  constructor(private router: Router,public notifyService:NotificationsServiceService){
     this.notifyService.runningNotificationService();
   }
 
