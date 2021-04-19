@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VaccineSettingComponent } from './vaccine-setting/vaccine-setting.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VaccinceScheduleComponent,
-    VaccineSettingComponent
+    VaccineSettingComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { VaccineSettingComponent } from './vaccine-setting/vaccine-setting.compo
     ReactiveFormsModule,
     FormsModule
   ],
-  entryComponents: [],
+  entryComponents: [NotificationComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

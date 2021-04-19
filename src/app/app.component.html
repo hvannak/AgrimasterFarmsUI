@@ -4,7 +4,7 @@
   </button>
   <span>Agrimaster Farms</span>
   <span class="app-spacer"></span>
-  <button mat-icon-button class="app-icon favorite-icon" aria-label="Example icon-button with heart icon">
+  <button (click)="openDialog()" mat-icon-button class="app-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon [matBadge]="notifyService.bageNotify" matBadgeColor="warn">notifications</mat-icon>
   </button>
   <button mat-icon-button class="app-icon" aria-label="Example icon-button with share icon">
@@ -43,7 +43,7 @@
   </mat-drawer>
 
   <div class="app-sidenav-content">
-    <div *ngIf="showWelcome else sidebarmenu" class="content" role="main">
+    <div *ngIf="notifyService.showWelcome else sidebarmenu" class="content" role="main">
       <div class="card highlight-card card-small">
         <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678"
           viewBox="0 0 101.678 101.678">

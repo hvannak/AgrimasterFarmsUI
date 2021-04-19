@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 export class NotificationsServiceService {
   bageNotify = 0;
   message = new Subject<String>();
+  notificationCollection:any = [];
+  showWelcome=true;
 
   constructor(private http:HttpClient) { 
   }
@@ -26,7 +28,13 @@ export class NotificationsServiceService {
     });  
   
     connection.on("BroadcastMessage", (message) => { 
-      console.log(message); 
+      console.log(message);
+      let notificationlocal = localStorage.getItem('notification');
+      if(notificationlocal != null){
+        this.notificationCollection = JSON.parse(notificationlocal);
+      }
+      this.notificationCollection.push(message);
+      localStorage.setItem("notification", JSON.stringify(this.notificationCollection)); 
       this.bageNotify += 1;
       this.message.next(message);
       // this.getEmployeeData();  
