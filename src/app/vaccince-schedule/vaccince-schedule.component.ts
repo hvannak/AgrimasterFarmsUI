@@ -92,19 +92,10 @@ export class VaccinceScheduleComponent implements OnInit {
     });
   }
 
-  applyFilter(filterValue: string) {
-    this.service.vaccineScheduleList.filter = filterValue.trim().toLowerCase();
-  
-    if (this.service.vaccineScheduleList.paginator) {
-      this.service.vaccineScheduleList.paginator.firstPage();
-    }
-  }
-
-  onDeleteVaccineSchedule(id: string) {
+  onDeleteVaccineSchedule() {
     if (confirm('Are you sure to delete this record?')) {
-      this.service.deleteVaccineSchedule(id).subscribe(res => {
-        let index = this.service.vaccineScheduleList.data.findIndex(x=>x.VaccineID == id);
-        this.service.vaccineScheduleList.data.splice(index,1);
+      this.service.deleteVaccineSchedule().subscribe(res => {
+        this.service.vaccineScheduleList.data = [];
         this.service.vaccineScheduleList._updateChangeSubscription();
         this.toastr.warning("Deleted Successfully", "Vaccine Schedule");
       });
@@ -117,6 +108,20 @@ export class VaccinceScheduleComponent implements OnInit {
       this.service.vaccineScheduleList.paginator = this.paginator;
       this.service.vaccineScheduleList.sort = this.sort;
     });
+  }
+
+  generateProjectVacSchedule(){
+    if(this.service.formModel.value.ProjectID  && this.service.formModel.value.VacDate){
+      this.service.getProjectGenerateVaccineSchedule().subscribe(res => {
+        this.service.vaccineScheduleList = new MatTableDataSource(res as Array<any>);
+        this.service.vaccineScheduleList.paginator = this.paginator;
+        this.service.vaccineScheduleList.sort = this.sort;
+        this.toastr.success("New Vaccine Schedule has been generated","Register Vaccine Schedule");
+      })
+    }
+    else{
+      this.toastr.warning("Please enter ProjectID and Project Date.","Register Vaccine Schedule");
+    }
   }
 
 }

@@ -1,0 +1,28 @@
+<div class="flex-container">
+    <div class="panel">
+        <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()" class="vac-form">
+            <mat-card class="vac-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="vac-header-image"></div>
+                    <mat-card-title>Vaccine Setting</mat-card-title>
+                    <mat-card-subtitle>You can create vaccine setting for farms</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-form-field class="vac-full-width" appearance="fill">
+                        <mat-label>Day RangOfVaccine</mat-label>
+                        <input matInput type="text" formControlName="DayRangOfVaccine">
+                    </mat-form-field>
+                    <mat-form-field class="vac-full-width" appearance="fill">
+                        <mat-label>Day RangOfProject</mat-label>
+                        <input matInput type="text" formControlName="DayRangOfProject">
+                    </mat-form-field>
+                    
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>RESET</button>
+                    <button mat-button type="submit" [disabled]="!service.formModel.valid">SAVE</button>
+                </mat-card-actions>
+            </mat-card>
+        </form>
+    </div>
+</div>

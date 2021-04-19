@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -34,7 +35,7 @@ export class VaccineServiceService {
     }
   
     getVaccineScheduleList() {
-      return this.http.get(environment.apiURL + '/VaccineSchedules');
+      return this.http.get(environment.apiURL + '/VaccineSchedules/Closeto');
     }
   
     getVaccineScheduleListByID(id:string):any{
@@ -44,8 +45,13 @@ export class VaccineServiceService {
     getVaccineScheduleListByProjectID(){
       return this.http.get(environment.apiURL + '/VaccineSchedules/Project/' + this.formModel.value.ProjectID);
     }
+
+    getProjectGenerateVaccineSchedule(){
+      let proDate = formatDate(this.formModel.value.VacDate, environment.format, environment.locale);
+      return this.http.get(environment.apiURL + '/VaccineSchedules/GenerateProject/' + this.formModel.value.ProjectID + '/' + proDate);
+    }
   
-    deleteVaccineSchedule(id:string) {
-      return this.http.delete(environment.apiURL + '/VaccineSchedules/' + id);
+    deleteVaccineSchedule() {
+      return this.http.delete(environment.apiURL + '/VaccineSchedules/' + this.formModel.value.ProjectID);
     }
 }

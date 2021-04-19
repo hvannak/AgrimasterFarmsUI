@@ -20,4 +20,9 @@ export class AppComponent {
     this.router.navigate(['/vaccine']);
     this.showWelcome = false;
   }
+
+  gotoVaccineSetting(){
+    this.router.navigate(['/vaccinesetting']);
+    this.showWelcome = false;
+  }
 }

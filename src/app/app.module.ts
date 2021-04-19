@@ -9,11 +9,13 @@ import { MaterialModule } from './material-module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VaccineSettingComponent } from './vaccine-setting/vaccine-setting.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VaccinceScheduleComponent
+    VaccinceScheduleComponent,
+    VaccineSettingComponent
   ],
   imports: [
     BrowserModule,
