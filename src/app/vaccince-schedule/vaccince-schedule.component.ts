@@ -64,6 +64,7 @@ export class VaccinceScheduleComponent implements OnInit {
   putVaccineSchedule(){
     this.service.putVaccineSchedule().subscribe(
       (res:any) => {   
+        console.log(res);
         let index = this.service.vaccineScheduleList.data.findIndex(x=>x.VaccineID == this.service.formModel.value.VaccineID);
         this.service.vaccineScheduleList.data[index] = res;
         this.service.vaccineScheduleList._updateChangeSubscription();   
@@ -80,6 +81,7 @@ export class VaccinceScheduleComponent implements OnInit {
     );
   }
   openForEdit(item:any) {
+    console.log(item.StatusID);
     this.service.formModel.setValue({
       VaccineID:item.VaccineID,
       ProjectID:item.ProjectID,
@@ -88,7 +90,7 @@ export class VaccinceScheduleComponent implements OnInit {
       Qty: item.Qty,
       ChickEjected: item.ChickEjected,
       Description: item.Description,
-      StatusID: item.StatusID
+      StatusID: item.StatusID == 0 ? "0" : "1"
     });
   }
 
