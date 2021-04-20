@@ -46,6 +46,10 @@ export class VaccineServiceService {
       return this.http.get(environment.apiURL + '/VaccineSchedules/Project/' + this.formModel.value.ProjectID);
     }
 
+    getVaccineScheduleListByNotificaton(proId:string,date:string){
+      return this.http.get(environment.apiURL + '/VaccineSchedules/Notification/' + proId + "/" + date);
+    }
+
     getProjectGenerateVaccineSchedule(){
       let proDate = formatDate(this.formModel.value.VacDate, environment.format, environment.locale);
       return this.http.get(environment.apiURL + '/VaccineSchedules/GenerateProject/' + this.formModel.value.ProjectID + '/' + proDate);

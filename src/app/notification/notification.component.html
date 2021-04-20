@@ -6,7 +6,7 @@
     </mat-card-header>
     <mat-card-content>
         <mat-selection-list #notify [multiple]="false">
-            <mat-list-option *ngFor="let item of notificationList" [value]="item" (click)="gotoVaccine()">
+            <mat-list-option *ngFor="let item of notificationList" [value]="item" (click)="gotoVaccine(item)">
               {{item.message}}
             </mat-list-option>
           </mat-selection-list>

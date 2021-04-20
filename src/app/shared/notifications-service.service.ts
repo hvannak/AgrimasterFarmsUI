@@ -14,6 +14,11 @@ export class NotificationsServiceService {
   showWelcome=true;
 
   constructor(private http:HttpClient) { 
+    let notification = localStorage.getItem('notification');
+    if(notification != null){
+      this.notificationCollection = JSON.parse(notification);
+      this.bageNotify = this.notificationCollection.length;
+    }
   }
 
   runningNotificationService() {
@@ -36,8 +41,7 @@ export class NotificationsServiceService {
       this.notificationCollection.push(message);
       localStorage.setItem("notification", JSON.stringify(this.notificationCollection)); 
       this.bageNotify += 1;
-      this.message.next(message);
-      // this.getEmployeeData();  
+      this.message.next(message);  
     });
   }
 
