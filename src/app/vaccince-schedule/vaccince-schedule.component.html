@@ -46,6 +46,7 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <button mat-button (click)="onDeleteVaccineSchedule()">DELETE</button>
+                    <button mat-button (click)="resetForm()">RESET</button>
                     <button mat-button (click)="onSubmit()" [disabled]="!service.formModel.valid">SAVE</button>
                 </mat-card-actions>
             </mat-card>

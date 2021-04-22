@@ -104,6 +104,10 @@ export class VaccinceScheduleComponent implements OnInit {
     }
   }
 
+  resetForm(){
+    this.service.formModel.reset();
+  }
+
   getProjectVacSchedule(){
     this.service.getVaccineScheduleListByProjectID().subscribe(res => {
       this.service.vaccineScheduleList = new MatTableDataSource(res as Array<any>);
