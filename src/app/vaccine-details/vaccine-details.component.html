@@ -1,0 +1,67 @@
+<mat-card>
+    <mat-card-header>
+        <div mat-card-avatar class="vac-header-image"></div>
+        <mat-card-title>Vaccine Schedule Details</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="service.vaccineScheduleList" matSort matSortActive="ProjectID" matSortDirection="asc" (matSortChange)="resetPaging()">
+
+            <ng-container matColumnDef="ProjectID">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ProjectID </th>
+                <td mat-cell *matCellDef="let row"> {{row.ProjectID}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="VacDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> VacDate </th>
+                <td mat-cell *matCellDef="let row"> {{row.VacDate | date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Inventory">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Inventory </th>
+                <td mat-cell *matCellDef="let row"> {{row.Inventory}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Qty">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
+                <td mat-cell *matCellDef="let row"> {{row.Qty}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ChickEjected">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
+                <td mat-cell *matCellDef="let row"> {{row.ChickEjected}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                <td mat-cell *matCellDef="let row"> {{row.Description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="StatusID">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> StatusID </th>
+                <td mat-cell *matCellDef="let row"> {{row.StatusID == 0 ? "Active" : "Done"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="LastModify">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> LastModify </th>
+                <td mat-cell *matCellDef="let row"> {{row.LastModify}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter</td>
+            </tr>
+        </table>
+
+        <!-- <mat-paginator [pageSizeOptions]="[25, 100]"></mat-paginator> -->
+        <mat-paginator [length]="resultsLength"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="handlePageEvent($event)">
+        </mat-paginator>
+        
+    </mat-card-content>
+</mat-card>

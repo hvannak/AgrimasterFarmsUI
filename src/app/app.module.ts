@@ -11,13 +11,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VaccineSettingComponent } from './vaccine-setting/vaccine-setting.component';
 import { NotificationComponent } from './notification/notification.component';
+import { VaccineDetailsComponent } from './vaccine-details/vaccine-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VaccinceScheduleComponent,
     VaccineSettingComponent,
-    NotificationComponent
+    NotificationComponent,
+    VaccineDetailsComponent
   ],
   imports: [
     BrowserModule,

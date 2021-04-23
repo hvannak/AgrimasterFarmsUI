@@ -34,6 +34,10 @@ export class VaccineServiceService {
     putVaccineSchedule(){
       return this.http.put(environment.apiURL + '/VaccineSchedules/' + this.formModel.value.VaccineID,this.formModel.value);
     }
+
+    getVaccineSchedulePageList(pageOpt:any) {
+      return this.http.post(environment.apiURL + '/VaccineSchedules/Page',pageOpt);
+    }
   
     getVaccineScheduleList() {
       return this.http.get(environment.apiURL + '/VaccineSchedules/Closeto');

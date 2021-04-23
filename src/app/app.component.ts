@@ -32,6 +32,11 @@ export class AppComponent {
     this.notifyService.showWelcome = false;
   }
 
+  gotoVaccineDetails(){
+    this.router.navigate(['/vaccinedetails']);
+    this.notifyService.showWelcome = false;
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(NotificationComponent, {
       width: 'auto',
