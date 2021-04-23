@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { VaccineSettingComponent } from './vaccine-setting/vaccine-setting.component';
 import { NotificationComponent } from './notification/notification.component';
 import { VaccineDetailsComponent } from './vaccine-details/vaccine-details.component';
+import { VaccineImageComponent } from './vaccine-image/vaccine-image.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { VaccineDetailsComponent } from './vaccine-details/vaccine-details.compo
     VaccinceScheduleComponent,
     VaccineSettingComponent,
     NotificationComponent,
-    VaccineDetailsComponent
+    VaccineDetailsComponent,
+    VaccineImageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { VaccineDetailsComponent } from './vaccine-details/vaccine-details.compo
     ReactiveFormsModule,
     FormsModule
   ],
-  entryComponents: [NotificationComponent],
+  entryComponents: [NotificationComponent,VaccineImageComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
