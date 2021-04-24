@@ -16,22 +16,23 @@ export class NotificationComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<NotificationComponent>,private router: Router,
   public notifyService:NotificationsServiceService,public vacService:VaccineServiceService ) { }
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   notificationList:any[] = [];
 
   ngOnInit(): void {
-    let notificationCollection = localStorage.getItem('notification');
-    if(notificationCollection != null){
-      this.notificationList = JSON.parse(notificationCollection);
-    }
+    // let notificationCollection = localStorage.getItem('notification');
+    // if(notificationCollection != null){
+    //   this.notificationList = JSON.parse(notificationCollection);
+    // }
+    this.notificationList = this.notifyService.notificationCollection;
+    console.log(this.notificationList);
   }
 
   gotoVaccine(item:any){
     this.router.navigate(['/vaccine']);
     this.notifyService.showWelcome = false;
-    if(item.dateVacc){
-      let proDate = formatDate(item.dateVacc, environment.format, environment.locale);
-      this.vacService.getVaccineScheduleListByNotificaton(item.projectID,proDate).subscribe((res:any) => {
+    if(item.DateVacc){
+      let proDate = formatDate(item.DateVacc, environment.format, environment.locale);
+      this.vacService.getVaccineScheduleListByNotificaton(item.ProjectID,proDate).subscribe((res:any) => {
         this.vacService.formModel.patchValue({
           VaccineID:res.VaccineID,
           ProjectID:res.ProjectID,
@@ -44,9 +45,9 @@ export class NotificationComponent implements OnInit {
         });
       })
     }
-    let index = this.notificationList.findIndex(x=>x.projectID == item.projectID && x.dateVacc);
-    this.notificationList.splice(index,1);
-    localStorage.setItem("notification", JSON.stringify(this.notificationList)); 
+    // let index = this.notificationList.findIndex(x=>x.ProjectID == item.ProjectID && x.DateVacc == item.DateVacc);
+    // this.notificationList.splice(index,1);
+    // localStorage.setItem("notification", JSON.stringify(this.notificationList)); 
     this.dialogRef.close();
   }
 

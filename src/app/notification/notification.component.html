@@ -8,7 +8,7 @@
     <mat-dialog-content class="mat-typography">
       <mat-selection-list #notify [multiple]="false">
           <mat-list-option *ngFor="let item of notificationList" [value]="item" (click)="gotoVaccine(item)">
-            {{item.message}}
+            {{item.Message}}
           </mat-list-option>
         </mat-selection-list>
     </mat-dialog-content>
