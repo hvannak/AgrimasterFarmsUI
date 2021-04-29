@@ -19,6 +19,8 @@ export class NotificationsServiceService {
     //   this.notificationCollection = JSON.parse(notification);
     //   this.bageNotify = this.notificationCollection.length;
     // }
+    console.log(window.location.hostname);
+    console.log(environment.apiURL);
     this.getActiveNotificationList().subscribe((res:any) => {
       this.notificationCollection = res;
       this.bageNotify = res.length;
