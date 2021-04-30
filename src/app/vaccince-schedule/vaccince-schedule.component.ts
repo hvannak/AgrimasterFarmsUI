@@ -109,6 +109,7 @@ export class VaccinceScheduleComponent implements OnInit {
   }
 
   getProjectVacSchedule(){
+    if(this.service.formModel.value.ProjectID != "")
     this.service.getVaccineScheduleListByProjectID().subscribe(res => {
       this.service.vaccineScheduleList = new MatTableDataSource(res as Array<any>);
       this.service.vaccineScheduleList.paginator = this.paginator;

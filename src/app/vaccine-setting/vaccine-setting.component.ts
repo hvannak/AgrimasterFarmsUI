@@ -22,7 +22,9 @@ export class VaccineSettingComponent implements OnInit {
       VacSettingID: '0'
     });
     this.service.getVaccineSettingList().subscribe(res => {
-      this.service.formModel.setValue(res);
+      if(res){
+        this.service.formModel.setValue(res);
+      }
     });
   }
 
