@@ -88,7 +88,7 @@ export class VaccineDetailsComponent implements OnInit {
   viewImage(row:any){
     const dialogRef = this.dialog.open(VaccineImageComponent, {
       width: 'auto',
-      data: {imageFile: row.imageFile }
+      data: {imageFile: row.ImageFile }
     });
 
     dialogRef.afterClosed().subscribe(result => {

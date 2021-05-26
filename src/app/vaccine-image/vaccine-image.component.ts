@@ -13,7 +13,6 @@ export class VaccineImageComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageFile = this.data.imageFile;
-    console.log(this.imageFile);
   }
 
 }
