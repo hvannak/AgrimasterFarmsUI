@@ -36,7 +36,7 @@
             </ng-container>
 
             <ng-container matColumnDef="ChickEjected">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ejected Number </th>
                 <td mat-cell *matCellDef="let row"> {{row.ChickEjected}} </td>
             </ng-container>
 
@@ -48,11 +48,6 @@
             <ng-container matColumnDef="StatusID">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> StatusID </th>
                 <td mat-cell *matCellDef="let row"> {{row.StatusID == 0 ? "Active" : "Done"}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="LastModify">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> LastModify </th>
-                <td mat-cell *matCellDef="let row"> {{row.LastModify}} </td>
             </ng-container>
 
             <ng-container matColumnDef="View">

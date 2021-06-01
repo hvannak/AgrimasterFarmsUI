@@ -19,7 +19,7 @@ export class VaccineServiceService {
       VaccineID:[''],
       ProjectID:['',Validators.required],
       VacDate:['',Validators.required],
-      Inventory:['',Validators.required],
+      VacSettingID:['',Validators.required],
       // Qty:['',[Validators.required,Validators.pattern(/^\d+\.\d{2}$/)]],
       Qty:['',Validators.required],
       ChickEjected:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
@@ -57,7 +57,7 @@ export class VaccineServiceService {
 
     getProjectGenerateVaccineSchedule(){
       let proDate = formatDate(this.formModel.value.VacDate, environment.format, environment.locale);
-      return this.http.get(environment.apiURL + '/VaccineSchedules/GenerateProject/' + this.formModel.value.ProjectID + '/' + proDate);
+      return this.http.get(environment.apiURL + '/VaccineSchedules/GenerateProject/' + this.formModel.value.ProjectID + '/' + proDate + '/' + this.formModel.value.VacSettingID);
     }
   
     deleteVaccineSchedule() {

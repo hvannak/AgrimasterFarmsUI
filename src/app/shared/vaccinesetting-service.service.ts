@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,12 +9,14 @@ import { environment } from 'src/environments/environment';
 })
 export class VaccinesettingServiceService {
 
+  vaccineSettingList:MatTableDataSource<any>;
   constructor(private fb:FormBuilder,private http:HttpClient) { 
-
+    this.vaccineSettingList = new MatTableDataSource();
   }
 
   formModel = this.fb.group({
     VacSettingID:[''],
+    Inventory:['',Validators.required],
     DayRangOfVaccine:['',Validators.required],
     DayRangOfProject:['',Validators.required]
   });

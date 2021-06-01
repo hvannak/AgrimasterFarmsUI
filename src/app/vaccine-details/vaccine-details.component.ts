@@ -16,7 +16,7 @@ import { VaccineImageComponent } from '../vaccine-image/vaccine-image.component'
 })
 export class VaccineDetailsComponent implements OnInit {
 
-  displayedColumns: string[] = ['ProjectID','VacDate','Inventory','Qty','ChickEjected','Description','StatusID','LastModify','View'];
+  displayedColumns: string[] = ['ProjectID','VacDate','Inventory','Qty','ChickEjected','Description','StatusID','View'];
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:false}) sort: MatSort;
   showFiller = false;

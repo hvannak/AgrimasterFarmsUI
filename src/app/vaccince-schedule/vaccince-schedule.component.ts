@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { VaccineServiceService } from '../shared/vaccine-service.service';
+import { VaccinesettingServiceService } from '../shared/vaccinesetting-service.service';
 
 @Component({
   selector: 'app-vaccince-schedule',
@@ -16,8 +17,9 @@ export class VaccinceScheduleComponent implements OnInit {
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:false}) sort: MatSort;
   showFiller = false;
+  vaccineSettingList:Array<any> = [];
 
-  constructor(public service:VaccineServiceService, 
+  constructor(public service:VaccineServiceService, public settingService:VaccinesettingServiceService,
     private toastr:ToastrService) {
       this.paginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
       this.sort = new MatSort();
@@ -32,6 +34,9 @@ export class VaccinceScheduleComponent implements OnInit {
       this.service.vaccineScheduleList = new MatTableDataSource(res as Array<any>);
       this.service.vaccineScheduleList.paginator = this.paginator;
       this.service.vaccineScheduleList.sort = this.sort;
+    });
+    this.settingService.getVaccineSettingList().subscribe(res => {
+        this.vaccineSettingList = res as Array<any>;
     });
   }
 
@@ -118,7 +123,7 @@ export class VaccinceScheduleComponent implements OnInit {
   }
 
   generateProjectVacSchedule(){
-    if(this.service.formModel.value.ProjectID  && this.service.formModel.value.VacDate){
+    if(this.service.formModel.value.ProjectID  && this.service.formModel.value.VacDate && this.service.formModel.value.VacSettingID){
       this.service.getProjectGenerateVaccineSchedule().subscribe(res => {
         this.service.vaccineScheduleList = new MatTableDataSource(res as Array<any>);
         this.service.vaccineScheduleList.paginator = this.paginator;
@@ -127,7 +132,7 @@ export class VaccinceScheduleComponent implements OnInit {
       })
     }
     else{
-      this.toastr.warning("Please enter ProjectID and Project Date.","Register Vaccine Schedule");
+      this.toastr.warning("Please enter ProjectID, Project Date and Inventory.","Register Vaccine Schedule");
     }
   }
 
