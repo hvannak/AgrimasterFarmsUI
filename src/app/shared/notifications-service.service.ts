@@ -14,13 +14,6 @@ export class NotificationsServiceService {
   showWelcome=true;
 
   constructor(private http:HttpClient) { 
-    // let notification = localStorage.getItem('notification');
-    // if(notification != null){
-    //   this.notificationCollection = JSON.parse(notification);
-    //   this.bageNotify = this.notificationCollection.length;
-    // }
-    console.log(window.location.hostname);
-    console.log(environment.apiURL);
     this.getActiveNotificationList().subscribe((res:any) => {
       this.notificationCollection = res;
       this.bageNotify = res.length;
@@ -40,12 +33,6 @@ export class NotificationsServiceService {
   
     connection.on("BroadcastMessage", (message) => { 
       console.log(message);
-      // let notificationlocal = localStorage.getItem('notification');
-      // if(notificationlocal != null){
-      //   this.notificationCollection = JSON.parse(notificationlocal);
-      // }
-      // this.notificationCollection.push(message);
-      // localStorage.setItem("notification", JSON.stringify(this.notificationCollection));
       this.notificationCollection.push(message);
       console.log(this.notificationCollection); 
       this.bageNotify += 1;

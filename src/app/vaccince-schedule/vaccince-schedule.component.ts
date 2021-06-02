@@ -91,7 +91,7 @@ export class VaccinceScheduleComponent implements OnInit {
       VaccineID:item.VaccineID,
       ProjectID:item.ProjectID,
       VacDate: item.VacDate,
-      Inventory: item.Inventory,
+      VacSettingID: item.VacSettingID,
       Qty: item.Qty,
       ChickEjected: item.ChickEjected,
       Description: item.Description,
