@@ -9,6 +9,7 @@
                 <mat-error *ngIf="projectID.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <button mat-button (click)="resetPaging()">GET DATA</button>
+            <button mat-button (click)="exportExcelFile()">EXCEL DATA</button>
             <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
         </mat-card-subtitle>
     </mat-card-header>
