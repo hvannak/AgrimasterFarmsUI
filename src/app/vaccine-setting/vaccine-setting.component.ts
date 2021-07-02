@@ -40,6 +40,11 @@ export class VaccineSettingComponent implements OnInit {
     });
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.service.vaccineSettingList.filter = filterValue.trim().toLowerCase();
+  }
+
   onSubmit()
   {
     if(this.service.formModel.value.VacSettingID == '0'){

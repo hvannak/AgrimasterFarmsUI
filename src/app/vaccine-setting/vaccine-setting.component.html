@@ -32,6 +32,10 @@
     </div>
     <div class="panel">
         <mat-card>
+            <mat-form-field appearance="standard">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="data" #input>
+            </mat-form-field>
             <table mat-table [dataSource]="service.vaccineSettingList" matSort>
 
                 <ng-container matColumnDef="Inventory">
