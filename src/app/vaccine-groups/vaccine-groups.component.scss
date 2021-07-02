@@ -1,0 +1,50 @@
+.vac-card {
+    max-width: 300px;
+  }
+  
+  .vac-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  .vac-form {
+    min-width: 150px;
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .vac-full-width {
+    width: 100%;
+  }
+  
+  .flex-container {
+    display: flex;
+  }
+  
+  .flex-container > .panel {
+    padding: 5px;
+  }
+  
+  table {
+  width: 100%;
+  }
+  
+  .mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
+  
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+  
+  .mat-header-cell{
+    padding-left: 10px;
+  }

@@ -13,6 +13,7 @@ import { VaccineSettingComponent } from './vaccine-setting/vaccine-setting.compo
 import { NotificationComponent } from './notification/notification.component';
 import { VaccineDetailsComponent } from './vaccine-details/vaccine-details.component';
 import { VaccineImageComponent } from './vaccine-image/vaccine-image.component';
+import { VaccineGroupsComponent } from './vaccine-groups/vaccine-groups.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VaccineImageComponent } from './vaccine-image/vaccine-image.component';
     VaccineSettingComponent,
     NotificationComponent,
     VaccineDetailsComponent,
-    VaccineImageComponent
+    VaccineImageComponent,
+    VaccineGroupsComponent
   ],
   imports: [
     BrowserModule,

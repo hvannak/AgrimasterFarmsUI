@@ -3,6 +3,7 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { VaccinegroupsServiceService } from '../shared/vaccinegroups-service.service';
 import { VaccinesettingServiceService } from '../shared/vaccinesetting-service.service';
 
 @Component({
@@ -12,10 +13,11 @@ import { VaccinesettingServiceService } from '../shared/vaccinesetting-service.s
 })
 export class VaccineSettingComponent implements OnInit {
 
-  displayedColumns: string[] = ['Inventory','DayRangOfVaccine','DayRangOfProject'];
+  displayedColumns: string[] = ['Inventory','DayRang','Group'];
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:false}) sort: MatSort;
-  constructor(public service:VaccinesettingServiceService, 
+  vaccineGroupList:Array<any> = [];
+  constructor(public service:VaccinesettingServiceService,public serviceGroup:VaccinegroupsServiceService, 
     private toastr:ToastrService) {
       this.paginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
       this.sort = new MatSort();
@@ -27,10 +29,14 @@ export class VaccineSettingComponent implements OnInit {
     });
     this.service.getVaccineSettingList().subscribe(res => {
       if(res){
+        console.log(res);
         this.service.vaccineSettingList = new MatTableDataSource(res as Array<any>);
         this.service.vaccineSettingList.paginator = this.paginator;
         this.service.vaccineSettingList.sort = this.sort;
       }
+    });
+    this.serviceGroup.getVaccineGroupList().subscribe(res => {
+      this.vaccineGroupList = res as Array<any>;
     });
   }
 
@@ -82,9 +88,9 @@ export class VaccineSettingComponent implements OnInit {
   openForEdit(item:any) {
     this.service.formModel.setValue({
       VacSettingID:item.VacSettingID,
+      VaccineGroupID:item.VaccineGroupID,
       Inventory:item.Inventory,
-      DayRangOfVaccine: item.DayRangOfVaccine,
-      DayRangOfProject: item.DayRangOfProject
+      DayRang: item.DayRang,
     });
   }
 

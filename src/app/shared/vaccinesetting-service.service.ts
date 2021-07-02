@@ -16,9 +16,9 @@ export class VaccinesettingServiceService {
 
   formModel = this.fb.group({
     VacSettingID:[''],
+    VaccineGroupID:['',Validators.required],
     Inventory:['',Validators.required],
-    DayRangOfVaccine:['',Validators.required],
-    DayRangOfProject:['',Validators.required]
+    DayRang:['',Validators.required],
   });
 
   postVaccineSetting(){

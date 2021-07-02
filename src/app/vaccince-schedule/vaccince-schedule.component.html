@@ -21,10 +21,14 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field class="vac-full-width" appearance="fill">
-                        <mat-label>Inventory</mat-label>
-                        <mat-select formControlName="VacSettingID">
-                          <mat-option *ngFor="let item of vaccineSettingList" [value]="item.VacSettingID">{{item.Inventory}}</mat-option>
+                        <mat-label>Group</mat-label>
+                        <mat-select formControlName="VaccineGroupID">
+                          <mat-option *ngFor="let item of vaccineGroupList" [value]="item.VaccineGroupID">{{item.Description}}</mat-option>
                         </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="vac-full-width" appearance="fill">
+                        <mat-label>Inventory</mat-label>
+                        <input matInput type="text" formControlName="Inventory">
                     </mat-form-field>
                     <mat-form-field class="vac-full-width" appearance="fill">
                         <mat-label>Qty</mat-label>

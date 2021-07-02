@@ -19,8 +19,8 @@ export class VaccineServiceService {
       VaccineID:[''],
       ProjectID:['',Validators.required],
       VacDate:['',Validators.required],
-      VacSettingID:['',Validators.required],
-      // Qty:['',[Validators.required,Validators.pattern(/^\d+\.\d{2}$/)]],
+      VaccineGroupID:['',Validators.required],
+      Inventory:['',Validators.required],
       Qty:['',Validators.required],
       ChickEjected:['',[Validators.required,Validators.pattern("^[0-9]*$")]],
       Description:['',Validators.required],
@@ -32,7 +32,7 @@ export class VaccineServiceService {
     }
   
     putVaccineSchedule(){
-      return this.http.put(environment.apiURL + '/VaccineSchedules/' + this.formModel.value.VaccineID,this.formModel.value);
+      return this.http.put(environment.apiURL + '/VaccineSchedules/' + this.formModel.value.VaccineID,this.formModel.getRawValue());
     }
 
     getVaccineSchedulePageList(pageOpt:any) {
@@ -57,7 +57,7 @@ export class VaccineServiceService {
 
     getProjectGenerateVaccineSchedule(){
       let proDate = formatDate(this.formModel.value.VacDate, environment.format, environment.locale);
-      return this.http.get(environment.apiURL + '/VaccineSchedules/GenerateProject/' + this.formModel.value.ProjectID + '/' + proDate + '/' + this.formModel.value.VacSettingID);
+      return this.http.get(environment.apiURL + '/VaccineSchedules/GenerateProject/' + this.formModel.value.ProjectID + '/' + proDate + '/' + this.formModel.value.VaccineGroupID);
     }
   
     deleteVaccineSchedule() {
