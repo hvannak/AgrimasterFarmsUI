@@ -12,7 +12,7 @@ import { VaccinegroupsServiceService } from '../shared/vaccinegroups-service.ser
 })
 export class VaccineGroupsComponent implements OnInit {
 
-  displayedColumns: string[] = ['Description'];
+  displayedColumns: string[] = ['Description','Delete'];
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:false}) sort: MatSort;
   constructor(public service:VaccinegroupsServiceService, 
@@ -63,7 +63,7 @@ export class VaccineGroupsComponent implements OnInit {
     this.service.putVaccineGroup().subscribe(
       (res:any) => {
         console.log(res);
-        let index = this.service.vaccineGroupList.data.findIndex(x=>x.VacSettingID == this.service.formModel.value.VacSettingID);
+        let index = this.service.vaccineGroupList.data.findIndex(x=>x.VaccineGroupID == this.service.formModel.value.VaccineGroupID);
         this.service.vaccineGroupList.data[index] = res;
         this.service.vaccineGroupList._updateChangeSubscription();   
         this.service.formModel.reset();
@@ -84,6 +84,16 @@ export class VaccineGroupsComponent implements OnInit {
       VaccineGroupID:item.VaccineGroupID,
       Description:item.Description,
     });
+  }
+
+  deleteRow(item:any){
+    if (confirm('Are you sure to delete this record?')) {
+      this.service.deleteVaccineGroup(item.VaccineGroupID).subscribe(res => {
+        let index = this.service.vaccineGroupList.data.findIndex(x=>x.VaccineGroupID == item.VaccineGroupID);
+        this.service.vaccineGroupList.data.splice(index,1);
+        this.service.vaccineGroupList._updateChangeSubscription();
+      });
+    }
   }
 
 }

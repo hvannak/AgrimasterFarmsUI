@@ -36,6 +36,7 @@ export class NotificationComponent implements OnInit {
         this.vacService.formModel.patchValue({
           VaccineID:res.VaccineID,
           ProjectID:res.ProjectID,
+          VaccineGroupID: res.VaccineGroupID,
           VacDate: res.VacDate,
           Inventory: res.Inventory,
           Qty: res.Qty,

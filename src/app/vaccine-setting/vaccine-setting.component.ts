@@ -13,7 +13,7 @@ import { VaccinesettingServiceService } from '../shared/vaccinesetting-service.s
 })
 export class VaccineSettingComponent implements OnInit {
 
-  displayedColumns: string[] = ['Inventory','DayRang','Group'];
+  displayedColumns: string[] = ['Inventory','DayRang','Group','Delete'];
   @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
   @ViewChild(MatSort,{static:false}) sort: MatSort;
   vaccineGroupList:Array<any> = [];
@@ -97,6 +97,16 @@ export class VaccineSettingComponent implements OnInit {
       Inventory:item.Inventory,
       DayRang: item.DayRang,
     });
+  }
+
+  deleteRow(item:any){
+    if (confirm('Are you sure to delete this record?')) {
+      this.service.deleteVaccineSetting(item.VacSettingID).subscribe(res => {
+        let index = this.service.vaccineSettingList.data.findIndex(x=>x.VacSettingID == item.VacSettingID);
+        this.service.vaccineSettingList.data.splice(index,1);
+        this.service.vaccineSettingList._updateChangeSubscription();
+      });
+    }
   }
 
 }
